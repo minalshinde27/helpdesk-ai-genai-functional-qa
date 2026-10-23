@@ -1,0 +1,17 @@
+﻿# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+id_rsa
+id_ed25519
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Temporary troubleshooting output
+evidence/capture-test.txt
+evidence/capture-test-api.txt
+evidence/ollama-session.txt

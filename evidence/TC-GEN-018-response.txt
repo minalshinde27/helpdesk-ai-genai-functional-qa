@@ -1,0 +1,11 @@
+﻿Okay, I understand your order is delayed and you’d like to know its location and delivery date. 
+
+I can definitely help you look into this! To track your order, I’ll need a little more information. Since you don’t have your order number handy, could you please provide the following:
+
+*   **Your Full Name:**
+*   **Email Address used to place the order:**
+*   **Shipping Address:** (Street Address, City, State, Zip Code)
+
+Once I have this information, I can locate your order and check its current status with the shipping carrier. Please note that providing this information will allow me to quickly find your order details. 
+
+**Important Note:** While I can investigate the delay and provide you with the most up-to-date information I have access to, I can't guarantee an exact delivery date until the carrier confirms it. Standard shipping takes 3-5 business days, so I’ll do my best to give you a realistic estimate once I have the tracking details.
