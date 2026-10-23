@@ -89,8 +89,8 @@ A total of 20 functional test cases were executed against the local HelpDesk AI 
 
 | Assessment | Count | Percentage |
 |---|---:|---:|
-| Pass | 5 | 25% |
-| Partial Pass | 8 | 40% |
+| Pass | 4 | 20% |
+| Partial Pass | 9 | 45% |
 | Fail | 7 | 35% |
 | **Total** | **20** | **100%** |
 

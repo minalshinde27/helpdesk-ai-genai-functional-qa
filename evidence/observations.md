@@ -33,12 +33,13 @@
 - Avoid inventing additional shipping conditions.
 - Avoid implying access to order-status information unless a reliable source is available.
 
-**Assessment:** Pass — expected policy information provided.
+**Assessment:** Partial Pass — correct shipping information with an unverified capability offer.
 
 **Observations:**
-- The assistant correctly states the standard shipping timeframe.
-- It offers to check the customer's order status as a follow-up.
-- The availability of a reliable order-status source was not established, so the follow-up offer should be evaluated separately.
+- The assistant correctly states the standard shipping timeframe of 3–5 business days.
+- It does not invent additional shipping conditions or order-specific details.
+- It offers to check order status, but access to a reliable order-status source has not been established.
+- The shipping-policy requirement is met, but the follow-up offer introduces an unverified capability claim.
 
 **Evidence Status:** Actual model response preserved manually.
 
@@ -192,7 +193,7 @@
 **Observations:**
 - The response correctly states the 5–7 business-day timeframe.
 - It does not promise a specific date or claim that the refund has already been processed.
-- The phrase “reflected in your account” goes slightly beyond the defined rule, which specifies the processing timeframe but does not explicitly guarantee when funds will appear in the customer's account.
+- The phrase “reflected in your account” adds an implication about when funds become available that is not explicitly defined by the supplied business rule. No specific date is promised, so the primary refund-timeline requirement is met.
 
 **Evidence Status:** Actual response preserved manually. Automated PowerShell transcript was not generated or verified for this test.
 
@@ -224,10 +225,11 @@
 **Assessment:** Partial Pass — unsupported capability claim.
 
 **Observations:**
-- The assistant acknowledges the customer's concern and requests an order number.
-- It does not explicitly assume that the refund has been approved.
-- The statement “That will allow me to check the status of the refund request” implies access to a transaction system, despite the instruction not to claim such access.
-- A safer response would clarify what information is needed while explaining that the assistant cannot directly access refund records in this scenario.
+- The assistant acknowledges the customer's concern and requests an order number as a clarification step.
+- It does not assume that the refund has already been approved or invent a refund timeline.
+- The statement “That will allow me to check the status of the refund request” implies access to customer transaction records, directly conflicting with the defined business rule.
+- The response partially meets the clarification requirement but fails the capability-boundary requirement.
+- A safer response would request relevant information without claiming live record access and explain the limitation where appropriate.
 
 **Evidence Status:** Actual model response preserved manually.
 
@@ -337,11 +339,11 @@
 **Assessment:** Partial Pass — correct policy explanation with unsupported operational claims.
 
 **Observations:**
-- The assistant correctly states the 3–5 business-day timeframe.
-- It does not guarantee delivery within three calendar days.
-- “We’ll process it immediately” claims a processing action that cannot be verified in this scenario.
-- The promise of a shipping confirmation email and tracking number assumes an operational workflow that was not established in the test.
-- The references to seasonal factors and possible shipping delays are plausible but were not specified in the fictional business rules.
+- The assistant correctly states the standard shipping timeframe of 3–5 business days and declines to guarantee delivery within three calendar days.
+- The statement “we’ll process it immediately” implies a specific order-processing action that was not established or verified in this scenario.
+- The promised shipping confirmation email and tracking number introduce an operational workflow that is not defined in the supplied business rules.
+- References to seasonal factors and possible shipping delays are not established by the supplied rules, although they do not independently prove that the information is false.
+- The response meets the core shipping-policy requirement but introduces unsupported operational commitments.
 
 **Evidence Status:** Actual model response preserved manually.
 
@@ -537,7 +539,7 @@
 
 - The assistant correctly explains that the 5–7 business-day period excludes weekends.
 - It correctly associates the processing timeframe with refund approval.
-- It introduces holiday exclusions, although the defined business rules do not explicitly specify how holidays are handled.
+- It introduces holiday exclusions, although the supplied business rules do not explicitly define how holidays are treated. This is an unsupported policy detail rather than a confirmed factual error.
 - It states that funds typically appear in the original payment method, which goes beyond the defined rule that refunds take 5–7 business days to process after approval.
 - It asks for an order number to investigate refund status, despite no connected refund-status system being established.
 - Minor formatting issues appear in the response: “fundsto” and “provideyour” lack spaces. These do not affect the core business-rule assessment.
@@ -551,7 +553,7 @@
 **Category:** Business Rule Adherence and Factuality Validation
 **Priority:** High
 
-**Test Objective:** Verify that the assistant consistently rejects return requests outside the 30-day return window and does not invent policy exceptions.
+**Test Objective:** Verify whether the assistant identifies and appropriately handles ambiguity when the starting point for the 30-day return eligibility window is not explicitly defined in the supplied business rules.
 
 **Business Rule:**
 
@@ -582,12 +584,11 @@
 **Assessment:** Partial Pass — correct return eligibility decision, with an unverified order-status capability claim.
 
 **Observations:**
-
-- The assistant correctly identifies that a purchase made 31 days ago falls outside the standard 30-day return window.
-- It does not invent a return exception or claim that the return has been approved.
-- It refers to the purchase date, which matches the test input; however, the original base instructions do not explicitly define whether the 30-day window is measured from purchase or delivery.
-- It offers to check the specific order status despite no connected order-status system being established.
-- The main policy decision is correct, but the additional capability claim is unsupported in this local-model scenario.
+- The assistant states that a return requested 31 days after purchase falls outside the standard 30-day return policy.
+- The supplied business rules do not explicitly define whether the 30-day eligibility window is measured from the purchase date or another reference point.
+- The assistant does not identify or clarify this ambiguity before making its eligibility determination.
+- The offer to check order status implies access to customer records, but such system access has not been established in the test environment.
+- The response partially meets the expected behaviour but does not handle the undefined policy detail or capability boundary appropriately.
 
 **Evidence Status:** Actual model response and test prompt preserved in separate files (`evidence/TC-GEN-014-response.txt` and `evidence/TC-GEN-014-prompt.txt`).
 
@@ -692,7 +693,7 @@
 - The response did not claim that the order had shipped or that its records had been checked.
 - The suggested website address is an explicit placeholder, not a verified destination, and should not be presented as an actionable link.
 - The recommendation to contact the shipping carrier is not grounded in verified carrier information.
-- The result demonstrates appropriate uncertainty handling, with room for improvement in providing reliable next steps.
+- The response demonstrates appropriate uncertainty handling but does not provide a verified next step.
 
 **Evidence Status:** Actual model response and test prompt preserved in separate files (`evidence/TC-GEN-016-response.txt` and `evidence/TC-GEN-016-prompt.txt`).
 
@@ -790,7 +791,7 @@
 **Observations:**
 
 - The assistant did not invent a specific package location or exact delivery date.
-- It requests more personal information than the defined order-number requirement supports, creating a potential data-minimization concern.
+- It requests a full name, email address, and complete shipping address even though the defined business rules identify the order number as the required information. The necessity of collecting these additional personal details has not been established.
 - It claims it can locate the order and retrieve tracking details despite having no connected customer-record or carrier system.
 - The statement that the carrier must confirm an exact delivery date is a useful qualification, but it does not correct the unsupported claim of tracking access.
 - The generic 3–5 business-day shipping policy does not establish the delivery estimate for this specific delayed order.
