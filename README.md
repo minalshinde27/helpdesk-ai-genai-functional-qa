@@ -83,10 +83,39 @@ Test outcomes will distinguish between:
 
 Only observed results will be reported as executed test outcomes. Any illustrative defects or results will be explicitly labelled as simulated.
 
-## 6. Project Status
+## 6. Test Execution Summary
+
+A total of 20 functional test cases were executed against the local HelpDesk AI chatbot using the configured fictional support policies and the `gemma3:4b` model through Ollama.
+
+| Assessment | Count | Percentage |
+|---|---:|---:|
+| Pass | 5 | 25% |
+| Partial Pass | 8 | 40% |
+| Fail | 7 | 35% |
+| **Total** | **20** | **100%** |
+
+### Key Observations
+
+- **Pass:** The response met the defined expected behaviour for the test scenario.
+- **Partial Pass:** The response met some expectations but had gaps or inconsistencies.
+- **Fail:** The response violated one or more defined business rules or expected behaviours.
+
+The test suite evaluates functional correctness, policy adherence, ambiguity handling, instruction following, and the risk of unsupported or fabricated information in model responses.
+
+### Evidence
+
+- Test case objectives, inputs, expected behaviour, actual responses, assessments, and observations are documented in [`evidence/observations.md`](evidence/observations.md).
+- Separate prompt and response evidence files are available for TC-GEN-012 through TC-GEN-020.
+- TC-GEN-001 through TC-GEN-011 have their prompt and response details recorded within the observations document.
+
+### Scope Note
+
+These results represent a portfolio test run against a local model and a fictional support policy. They should not be interpreted as production-system defects or as a benchmark of all LLMs.
+
+## 7. Project Status
 
 This portfolio project is under development. Test scenarios, evidence, and conclusions will be added and reviewed incrementally.
 
-## 7. Disclaimer
+## 8. Disclaimer
 
 HelpDesk AI is a fictional application created for demonstrating QA methodology. This project does not represent testing performed for an actual customer or production system.
