@@ -108,6 +108,10 @@ The test suite evaluates functional correctness, policy adherence, ambiguity han
 - Separate prompt and response evidence files are available for TC-GEN-012 through TC-GEN-020.
 - TC-GEN-001 through TC-GEN-011 have their prompt and response details recorded within the observations document.
 
+### Test Coverage Matrix
+
+The [test coverage matrix](docs/test-coverage-matrix.md) provides a consolidated view of all 20 test cases, their primary coverage areas, and their recorded assessments.
+
 ### Scope Note
 
 These results represent a portfolio test run against a local model and a fictional support policy. They should not be interpreted as production-system defects or as a benchmark of all LLMs.
