@@ -44,7 +44,7 @@ This matrix summarizes the functional and behavioral coverage of the HelpDesk AI
 
 ## Evidence and Limitations
 
-Detailed test inputs, actual responses, expected behavior, observations, and assessment rationale are maintained in `evidence/observations.md`.
+Detailed test inputs, actual responses, expected behavior, observations, and assessment rationale are maintained in [`evidence/observations.md`](../evidence/observations.md).
 
 Separate prompt and response files are available for TC-GEN-012 through TC-GEN-020. Refer to the evidence documented for each individual test case.
 
