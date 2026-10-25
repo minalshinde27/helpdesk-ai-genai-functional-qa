@@ -12,6 +12,15 @@ The objective is to assess the assistant's functional correctness, adherence to 
 **Application:** Fictional customer support chatbot  
 **Testing focus:** Functional testing, negative testing, ambiguity handling, instruction following, and hallucination-risk assessment
 
+### Results at a Glance
+- **20 GenAI functional test scenarios** executed against a locally hosted HelpDesk AI prototype.
+- **5 key testing areas:** Policy compliance, ambiguity handling, instruction following, hallucination risk, and unsupported transaction claims.
+- **4 Pass, 9 Partial Pass, and 7 Fail** Based on the documented expected behaviour and observed model responses.
+- **Evidence-backed assessments:** Prompts, model responses, observations, and a test coverage matrix are available in this repository.
+- **Key risk areas observed:** Fabricated order and tracking information, unsupported refund confirmations, and failure to enforce defined return policies.
+
+**Important:** These results describe the behaviour of the tested local model in this fictional test environment. They do not represent production defect rates or results from a deployed customer-support system.
+
 ### Test Environment
 
 - **Local model runner:** Ollama
@@ -64,12 +73,21 @@ These rules define the expected behaviour against which test scenarios will be d
 - Claims about model accuracy across a production dataset
 - Automated test execution unless separately implemented and documented
 
-## 4. Planned Deliverables
+## 4. Portfolio Artifacts
 
-- Test scenarios with expected behaviour and validation criteria
-- Sample defect reports with reproducible inputs and supporting evidence
-- Test summary covering observations, risks, and recommendations
-- Evidence and sample outputs, with their origin clearly identified
+This repository contains the following artifacts from the GenAI functional QA exercise:
+
+**Test coverage matrix:** Scenario-level coverage, testing areas, and assessment summaries.
+
+**Test observations:** Test objectives, business rules, inputs, expected behaviour, actual responses, assessments, and observations for the documented test cases.
+
+**Prompt and response evidence:** Individual prompt and model-response files for the corresponding test cases.
+
+**Execution evidence:** Captured local model interaction logs where available.
+
+**Defined test scope and business rules:** The expected HelpDesk AI behaviour used as the basis for assessment.
+
+The observations document records the QA assessment of each scenario. The Pass, Partial Pass, and Fail classifications represent outcomes against the defined expectations; they should not be interpreted as confirmed defects in a production application.
 
 ## 5. Test Approach
 
@@ -116,10 +134,27 @@ The [test coverage matrix](docs/test-coverage-matrix.md) provides a consolidated
 
 These results represent a portfolio test run against a local model and a fictional support policy. They should not be interpreted as production-system defects or as a benchmark of all LLMs.
 
-## 7. Project Status
+## 7. QA Value Demonstrated
 
-This portfolio project is under development. Test scenarios, evidence, and conclusions will be added and reviewed incrementally.
+This exercise demonstrates a structured approach to evaluating GenAI-powered customer-support behaviour against defined business rules and expected outcomes.
 
-## 8. Disclaimer
+The assessment focuses on whether the assistant:
+- Applies business policies consistently, including return eligibility and refund timelines.
+- Requests clarification when required information is missing or ambiguous.
+- Avoids fabricating order status, tracking details, refund confirmations, or system capabilities.
+- Follows defined instructions when faced with conflicting requests or customer pressure.
+- Communicates limitations instead of presenting unverified information as fact.
+
+For each scenario, the documented evidence supports a review of the observed response against the expected behaviour. This approach can help QA teams identify risky response patterns and prioritise further validation before a GenAI feature is released.
+
+**Potential QA deliverables for similar engagements:** Scenario design, expected-behaviour criteria, prompt-based functional evaluation, evidence capture, risk-focused findings, and a test summary. These are examples of services this portfolio approach can support, not claims of completed client engagements.
+
+## 8. Project Status
+
+The initial 20-scenario GenAI functional QA exercise has been executed and documented. The repository includes the test coverage matrix, observations, and supporting prompt/response evidence.
+
+The portfolio is being refined to improve the clarity of findings, traceability between scenarios and evidence, and presentation of QA value. Results remain specific to the local model and fictional HelpDesk AI scenario described in this repository.
+
+## 9. Disclaimer
 
 HelpDesk AI is a fictional application created for demonstrating QA methodology. This project does not represent testing performed for an actual customer or production system.
