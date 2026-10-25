@@ -75,19 +75,15 @@ These rules define the expected behaviour against which test scenarios will be d
 
 ## 4. Portfolio Artifacts
 
-This repository contains the following artifacts from the GenAI functional QA exercise:
+The repository contains the following artifacts from the GenAI functional QA exercise:
 
-**Test coverage matrix:** Scenario-level coverage, testing areas, and assessment summaries.
+- **[Test coverage matrix](docs/test-coverage-matrix.md):** Coverage areas, test case references, and recorded assessments for all 20 scenarios.
+- **[Test observations](evidence/observations.md):** Test objectives, business rules, inputs, expected behaviour, actual responses, assessments, and supporting observations.
+- **Prompt and response evidence:** Separate evidence files for TC-GEN-012 through TC-GEN-020; details for TC-GEN-001 through TC-GEN-011 are recorded in the observations document.
+- **Execution evidence:** Local model interaction logs where available.
+- **Test instructions and business rules:** The defined behaviour used to evaluate the fictional HelpDesk AI assistant.
 
-**Test observations:** Test objectives, business rules, inputs, expected behaviour, actual responses, assessments, and observations for the documented test cases.
-
-**Prompt and response evidence:** Individual prompt and model-response files for the corresponding test cases.
-
-**Execution evidence:** Captured local model interaction logs where available.
-
-**Defined test scope and business rules:** The expected HelpDesk AI behaviour used as the basis for assessment.
-
-The observations document records the QA assessment of each scenario. The Pass, Partial Pass, and Fail classifications represent outcomes against the defined expectations; they should not be interpreted as confirmed defects in a production application.
+Assessment labels reflect observed responses against the portfolio's defined expectations. They are not confirmed defects in a production application.
 
 ## 5. Test Approach
 
@@ -103,7 +99,7 @@ Only observed results will be reported as executed test outcomes. Any illustrati
 
 ## 6. Test Execution Summary
 
-A total of 20 functional test cases were executed against the local HelpDesk AI chatbot using the configured fictional support policies and the `gemma3:4b` model through Ollama.
+A total of 20 functional test cases were executed against the locally hosted `gemma3:4b` model through Ollama, using the fictional HelpDesk AI instructions and business rules.
 
 | Assessment | Count | Percentage |
 |---|---:|---:|
@@ -112,48 +108,54 @@ A total of 20 functional test cases were executed against the local HelpDesk AI 
 | Fail | 7 | 35% |
 | **Total** | **20** | **100%** |
 
-### Key Observations
+### Key Findings
 
-- **Pass:** The response met the defined expected behaviour for the test scenario.
-- **Partial Pass:** The response met some expectations but had gaps or inconsistencies.
-- **Fail:** The response violated one or more defined business rules or expected behaviours.
+The test run identified response patterns requiring further validation, including:
 
-The test suite evaluates functional correctness, policy adherence, ambiguity handling, instruction following, and the risk of unsupported or fabricated information in model responses.
+- Fabricated order or tracking information.
+- Unsupported refund confirmations and transaction claims.
+- Inconsistent application of defined return policies.
+- Gaps in handling ambiguous requests and communicating limitations.
 
-### Evidence
+These classifications reflect the observed responses against the defined expected behaviour. They are specific to this test run and should not be interpreted as production defect rates or a benchmark of all language models.
 
-- Test case objectives, inputs, expected behaviour, actual responses, assessments, and observations are documented in [`evidence/observations.md`](evidence/observations.md).
-- Separate prompt and response evidence files are available for TC-GEN-012 through TC-GEN-020.
-- TC-GEN-001 through TC-GEN-011 have their prompt and response details recorded within the observations document.
+### Evidence and Coverage
 
-### Test Coverage Matrix
-
-The [test coverage matrix](docs/test-coverage-matrix.md) provides a consolidated view of all 20 test cases, their primary coverage areas, and their recorded assessments.
-
-### Scope Note
-
-These results represent a portfolio test run against a local model and a fictional support policy. They should not be interpreted as production-system defects or as a benchmark of all LLMs.
+- [Detailed test observations](evidence/observations.md) — inputs, expected behaviour, actual responses, assessments, and rationale.
+- [Test coverage matrix](docs/test-coverage-matrix.md) — consolidated coverage and assessment status for all 20 scenarios.
+- Separate prompt and response files are available for TC-GEN-012 through TC-GEN-020. Details for TC-GEN-001 through TC-GEN-011 are included in the observations document.
 
 ## 7. QA Value Demonstrated
 
-This exercise demonstrates a structured approach to evaluating GenAI-powered customer-support behaviour against defined business rules and expected outcomes.
+This portfolio demonstrates how structured functional QA can be applied to GenAI features before release. Rather than judging responses only by whether they sound plausible, the approach evaluates them against explicit business rules, expected behaviour, and defined risk scenarios.
 
-The assessment focuses on whether the assistant:
-- Applies business policies consistently, including return eligibility and refund timelines.
-- Requests clarification when required information is missing or ambiguous.
-- Avoids fabricating order status, tracking details, refund confirmations, or system capabilities.
-- Follows defined instructions when faced with conflicting requests or customer pressure.
-- Communicates limitations instead of presenting unverified information as fact.
+### QA Activities Demonstrated
 
-For each scenario, the documented evidence supports a review of the observed response against the expected behaviour. This approach can help QA teams identify risky response patterns and prioritise further validation before a GenAI feature is released.
+- **Business-rule validation:** Check whether responses consistently apply defined policies, eligibility conditions, and timelines.
+- **Negative and boundary testing:** Probe invalid requests, policy boundaries, missing information, and unsupported assumptions.
+- **Ambiguity and instruction-following evaluation:** Assess whether the assistant asks appropriate clarifying questions and follows its defined instructions when requests are incomplete or conflicting.
+- **Hallucination-risk assessment:** Identify unsupported claims, fabricated order or tracking details, and unverified transaction confirmations.
+- **Evidence-based assessment:** Record the input, expected behaviour, observed response, assessment, and rationale so findings can be reviewed and reproduced within the same test setup.
 
-**Potential QA deliverables for similar engagements:** Scenario design, expected-behaviour criteria, prompt-based functional evaluation, evidence capture, risk-focused findings, and a test summary. These are examples of services this portfolio approach can support, not claims of completed client engagements.
+### Potential QA Deliverables
+
+For a scoped GenAI functional QA engagement, deliverables could include:
+
+1. A risk-based test scenario suite mapped to agreed requirements and business rules.
+2. Expected-behaviour criteria and positive, negative, boundary, and ambiguity-focused test inputs.
+3. Recorded prompts, model responses, and execution evidence where available.
+4. An assessment log with evidence-backed findings and risk observations.
+5. A coverage summary and recommendations for further validation.
+
+The exact scope and deliverables would be agreed based on the feature, available test environment, and client requirements. This portfolio demonstrates the approach using a fictional application and a locally hosted model; it does not claim prior paid-client delivery or production-system testing.
 
 ## 8. Project Status
 
-The initial 20-scenario GenAI functional QA exercise has been executed and documented. The repository includes the test coverage matrix, observations, and supporting prompt/response evidence.
+The initial 20-scenario GenAI functional QA exercise has been executed and documented against the locally hosted `gemma3:4b` model using fictional HelpDesk AI instructions.
 
-The portfolio is being refined to improve the clarity of findings, traceability between scenarios and evidence, and presentation of QA value. Results remain specific to the local model and fictional HelpDesk AI scenario described in this repository.
+The repository includes the test coverage matrix, detailed observations, and supporting prompt/response evidence for the documented scenarios. The portfolio is being refined to improve the clarity and presentation of findings while preserving traceability and transparency about the test environment.
+
+All reported results are specific to this test setup and are not claims of production-system testing or paid-client experience.
 
 ## 9. Disclaimer
 
